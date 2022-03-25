@@ -36,3 +36,37 @@ The first thing we need to do is write code such that we can read a BED file. By
 I've already done most of the work for you. In the module `bed` I have put two functions, `parse_line()` and `print_line()` that parses a single line of BED information and prints it to a file, respectively. In the file `format_bed.py` I have written most of a tool for solving this exercise; you just need to fill in the final few details.
 
 (In this file, notice that I have changed how we parse options compared to the previous project. In the last project, you saw the basic way processes work with options, but different languages and different environmments typically have better solutions. The `argparse` module is one of the prefered ways to handle options in Python, and you might want to use that for your own projects).
+
+## Slicing genomic features
+
+"Genomics" sounds sexy, and we like to pretend that we analyse whole genomes, sometimes even several genomes, at the same time. The truth is, though, that we often spend most of our times looking at a small fraction of a genome, and we are interested in what features those parts of the genome hold.
+
+If you have a BED file that contains the features for the entire genome, and you have a few select regions you want to extract, you need to come up with a method to achieve that; you need all the BED lines that overlap your regions.
+
+This, now, is your task: write a program that takes two files as input, a BED file with features and a "query" file in a similar format, described below. Output all the lines in the BED file that falls inside the regions in the query file.
+
+The query file will essentially consist of one or more lines of the first three columns in a BED file:
+
+```
+chrom   chromStart  chromEnd
+```
+
+Here, we do not require that `chromEnd` is one past `chromStart`, but one line like the one above should be interpreted as asking for all features on chromosome `chrom` between `chromStart` and `chromEnd`, with `chromStart` included and `chromEnd` excluded.
+
+To get you started, I have written the option parsing in the file `query_bed.py` (you might want to check it out, as it differs slightly from `format_bed.py` and shows a new way to do this). 
+
+Then, realising that just parsing command line options isn't much compared to the work I have left for you, I also put some code in `query.py` that you might find helpful. It is a table where you can insert BED lines, and extract only those that sits on a desired chromosome. When you read the BED file, you can put the lines into this table, and when you need to query, you can get the lines from the correct chromosome. Then all you need to do filter the lines so you only get those in the right interval.
+
+The rest, however, is up to you. Implement me a `query_bed.py` so I can extract all features that overlap a set of regions.
+
+When you have implemented the tool, answer the questions below, commit it to GitHub, and you are done.
+
+## Questions
+
+How does your method for extracting features work?
+
+What is the complexity of the algorithm, as a function of the size of the two input files?
+
+Did you, at any point, exploit that our features are on single nucleotides and not larger regions?
+
+If you did, what would it take to handle general regions?
