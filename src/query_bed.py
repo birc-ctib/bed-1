@@ -27,19 +27,7 @@ def main() -> None:
     args = argparser.parse_args()
 
     # With all the options handled, we just need to do the real work
-
-    # Read all the features from the bed-file into a list.
-    table = Table()
-    for line in args.bed:
-        table.add_line(parse_line(line))
-
-    # Output results of queries.
-    for line in args.query:
-        chrom, start_s, end_s = line.split()
-        start, end = int(start_s), int(end_s)
-        for feature in table.get_chrom(chrom):
-            if start <= feature.chrom_start < end:
-                print_line(feature, args.outfile)
+    # FIXME: put your code here
 
 
 if __name__ == '__main__':

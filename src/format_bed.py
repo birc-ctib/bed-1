@@ -9,13 +9,6 @@ from bed import (
 )
 
 
-def process_lines(infile: TextIO, outfile: TextIO) -> None:
-    """Write all lines from `infile` to `outfile` (but tab-separated)."""
-    pass  # FIXME: your job is to implement this. Hint: it involves a loop
-    for line in infile:
-        print_line(parse_line(line), outfile)
-
-
 def main() -> None:
     """Run the program."""
     # Setting up the option parsing using the argparse module
@@ -35,7 +28,7 @@ def main() -> None:
     args = argparser.parse_args()
 
     # With all the options handled, we just need to do the real work
-    process_lines(args.infile, args.outfile)
+    # FIXME: put your code here
 
 
 if __name__ == '__main__':
