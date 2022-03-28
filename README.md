@@ -51,7 +51,7 @@ The query file will essentially consist of one or more lines of the first three 
 chrom   chromStart  chromEnd
 ```
 
-Here, we do not require that `chromEnd` is one past `chromStart`, but one line like the one above should be interpreted as asking for all features on chromosome `chrom` between `chromStart` and `chromEnd`, with `chromStart` included and `chromEnd` excluded.
+Here, we do not require that `chromEnd` is one past `chromStart` (`chromEnd == chromStart + 1`), but a line like the one above should be interpreted as asking for all features on chromosome `chrom` between `chromStart` and `chromEnd`, with `chromStart` included and `chromEnd` excluded.
 
 To get you started, I have written the option parsing in the file `query_bed.py` (you might want to check it out, as it differs slightly from `format_bed.py` and shows a new way to do this). 
 
@@ -65,7 +65,7 @@ When you have implemented the tool, answer the questions below, commit it to Git
 
 How does your method for extracting features work?
 
-What is the complexity of the algorithm, as a function of the size of the two input files?
+What is the complexity of the algorithm, as a function of the size of the two input files? When you answer this, you need to know that you can get the list of chromosomse from a `query.Table` in constant time, but it does, of course, take longer to run through all the lines in it.
 
 Did you, at any point, exploit that our features are on single nucleotides and not larger regions?
 
