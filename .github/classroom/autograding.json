@@ -3,7 +3,7 @@
         {
             "name": "Running python3 src/format_bed.py data/input.bed",
             "setup": "",
-            "run": "python3 src/format_bed.py data/input.bed",
+            "run": "python3 src/format_bed.py data/input.bed > /dev/null && echo OK",
             "input": "",
             "output": "",
             "comparison": "included",
@@ -23,7 +23,7 @@
         {
             "name": "Running python3 src/query_bed.py data/large.bed data/query-1.txt",
             "setup": "",
-            "run": "python3 src/query_bed.py data/large.bed data/query-1.txt",
+            "run": "python3 src/query_bed.py data/large.bed data/query-1.txt > /dev/null && echo OK",
             "input": "",
             "output": "",
             "comparison": "included",
@@ -34,6 +34,46 @@
             "name": "Compare output (query_qued query-1)",
             "setup": "python3 src/query_bed.py data/large.bed data/query-1.txt > query-1.txt",
             "run": "./.test/scripts/cmp.sh query-1.txt data/expected-1.txt",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 1
+        },
+        {
+            "name": "Running python3 src/query_bed.py data/large.bed data/query-2.txt",
+            "setup": "",
+            "run": "python3 src/query_bed.py data/large.bed data/query-2.txt > /dev/null && echo OK",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 1
+        },
+        {
+            "name": "Compare output (query_qued query-2)",
+            "setup": "python3 src/query_bed.py data/large.bed data/query-2.txt > query-2.txt",
+            "run": "./.test/scripts/cmp.sh query-2.txt data/expected-2.txt",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 1
+        },
+        {
+            "name": "Running python3 src/query_bed.py data/large.bed data/query-3.txt",
+            "setup": "",
+            "run": "python3 src/query_bed.py data/large.bed data/query-3.txt > /dev/null && echo OK",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 1
+        },
+        {
+            "name": "Compare output (query_qued query-3)",
+            "setup": "python3 src/query_bed.py data/large.bed data/query-3.txt > query-3.txt",
+            "run": "./.test/scripts/cmp.sh query-3.txt data/expected-3.txt",
             "input": "",
             "output": "",
             "comparison": "included",

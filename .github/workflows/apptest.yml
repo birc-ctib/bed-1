@@ -19,14 +19,6 @@ jobs:
         run: python3 -m pip install -r requirements.txt
         shell: bash
 
-      - name: Checking query_bed (query-1)
-        run: |
-          if ! cmp <(python3 src/query_bed.py data/large.bed data/query-1.txt) data/expected-1.txt; then
-            echo "Incorrect output for python3 src/query_bed.py data/large.bed data/query-1.txt"
-            diff <(python3 python3 src/query_bed.py data/large.bed data/query-1.txt) data/expected-1.txt
-          fi
-        shell: bash
-
       - name: Checking query_bed (query-2)
         run: |
           if ! cmp <(python3 src/query_bed.py data/large.bed data/query-2.txt) data/expected-2.txt; then
