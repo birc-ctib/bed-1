@@ -1,14 +1,24 @@
 {
     "tests": [
         {
-            "name": "Hello, world!",
+            "name": "Running python3 src/format_bed.py data/input.bed",
             "setup": "",
-            "run": "echo Hello, World!",
+            "run": "python3 src/format_bed.py data/input.bed",
             "input": "",
-            "output": "Hello, World!",
-            "comparison": "exact",
+            "output": "",
+            "comparison": "included",
             "timeout": 10,
             "points": 1
-        }
+        },
+        {
+            "name": "Compare output (format_bed)",
+            "setup": "python3 src/format_bed.py data/input.bed > output.bed",
+            "run": "./.test/scripts/cmp.sh output.bed data/output.bed",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 1
+        },
     ]
 }
