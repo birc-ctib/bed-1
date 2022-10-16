@@ -19,6 +19,26 @@
             "comparison": "included",
             "timeout": 10,
             "points": 1
+        },
+        {
+            "name": "Running python3 src/query_bed.py data/large.bed data/query-1.txt",
+            "setup": "",
+            "run": "python3 src/query_bed.py data/large.bed data/query-1.txt",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 1
+        },
+        {
+            "name": "Compare output (query_qued query-1)",
+            "setup": "python3 src/query_bed.py data/large.bed data/query-1.txt > query-1.txt",
+            "run": "./.test/scripts/cmp.sh query-1.txt data/expected-1.txt",
+            "input": "",
+            "output": "",
+            "comparison": "included",
+            "timeout": 10,
+            "points": 1
         }
     ]
 }
