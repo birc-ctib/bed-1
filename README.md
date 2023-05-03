@@ -25,7 +25,7 @@ You should interpret a row such as
 chrFoo  200 250 qux
 ```
 
-as saying that from position 200 to 250 chromosome `chrFoo` has feature `qux`. For intervals, BED files include the start index and exclude the end index, the same way that Python does (and no, there is no consistency in what formats do with intervals either). So if you have a chromsome and the interval `start` to `end`, think `chrom[start:end]`. BED files work a lot like Python here (and it isn't an accident that I chose BED for these projects).
+as saying that from position 200 to 250 chromosome `chrFoo` has feature `qux`. For intervals, BED files include the start index and exclude the end index, the same way that Python does (and no, there is no consistency in what formats do with intervals either). So if you have a chromsome and the interval `start` to `end`, think `chrom[start:end]`. BED files work a lot like Python here (and it isn't an accident that we chose BED for these projects).
 
 We will make one more simplifying assumption about our data: all the intervals are a single nucleoptide, so `chromEnd = chromStart + 1`. This simplifies the exercises we have to do (but who knows, maybe we will remove this simplification in future exercises?).
 
@@ -33,9 +33,9 @@ We will make one more simplifying assumption about our data: all the intervals a
 
 The first thing we need to do is write code such that we can read a BED file. By itself that isn't much use, but we might be in a situation where we have BED files output by some fool program that uses mixed spaces and tabs, and we need that data in a tool that only reads tabs. While it might not be the most straightforward solution to the problem, there are existing tools that can solve this for us, if we do have a tool that can read in BED data and then write it out again, we certainly do have a solution. So, we will write such a tool; then once we have the code for that, we can start doing more useful things with it.
 
-I've already done most of the work for you. In the module `bed` I have put two functions, `parse_line()` and `print_line()` that parses a single line of BED information and prints it to a file, respectively. In the file `format_bed.py` I have written most of a tool for solving this exercise; you just need to fill in the final few details.
+We've already done most of the work for you. In the module `bed` we have put two functions, `parse_line()` and `print_line()` that parses a single line of BED information and prints it to a file, respectively. In the file `format_bed.py` we have written most of a tool for solving this exercise; you just need to fill in the final few details.
 
-(In this file, notice that I have changed how we parse options compared to the previous project. In the last project, you saw the basic way processes work with options, but different languages and different environmments typically have better solutions. The `argparse` module is one of the prefered ways to handle options in Python, and you might want to use that for your own projects).
+(In this file, notice that we have changed how we parse options compared to the previous project. In the last project, you saw the basic way processes work with options, but different languages and different environmments typically have better solutions. The `argparse` module is one of the prefered ways to handle options in Python, and you might want to use that for your own projects).
 
 ## Slicing genomic features
 
@@ -53,13 +53,13 @@ chrom   chromStart  chromEnd
 
 Here, we do not require that `chromEnd` is one past `chromStart` (`chromEnd == chromStart + 1`), but a line like the one above should be interpreted as asking for all features on chromosome `chrom` between `chromStart` and `chromEnd`, with `chromStart` included and `chromEnd` excluded.
 
-To get you started, I have written the option parsing in the file `query_bed.py` (you might want to check it out, as it differs slightly from `format_bed.py` and shows a new way to do this). 
+To get you started, we have written the option parsing in the file `query_bed.py` (you might want to check it out, as it differs slightly from `format_bed.py` and shows a new way to do this). 
 
-Then, realising that just parsing command line options isn't much compared to the work I have left for you, I also put some code in `query.py` that you might find helpful. It is a table where you can insert BED lines, and extract only those that sits on a desired chromosome. When you read the BED file, you can put the lines into this table, and when you need to query, you can get the lines from the correct chromosome. Then all you need to do filter the lines so you only get those in the right interval.
+Then, realising that just parsing command line options isn't much compared to the work we have left for you, we also put some code in `query.py` that you might find helpful. It is a table where you can insert BED lines, and extract only those that sits on a desired chromosome. When you read the BED file, you can put the lines into this table, and when you need to query, you can get the lines from the correct chromosome. Then all you need to do filter the lines so you only get those in the right interval.
 
-The rest, however, is up to you. Implement me a `query_bed.py` so I can extract all features that overlap a set of regions.
+The rest, however, is up to you. Implement me a `query_bed.py` so all features that overlap a set of regions can be extracted.
 
-When you have implemented the tool, answer the questions below, commit it to GitHub, and you are done.
+When you have implemented the tool, answer the questions below and you are done.
 
 ## Questions
 
